@@ -1,4 +1,4 @@
-use bitcoin::{blockdata::opcodes::Opcode, opcodes::all::OP_RESERVED};
+use bitcoin::{opcodes::all::OP_RESERVED, Opcode};
 use proc_macro2::{
     Delimiter, Span, TokenStream,
     TokenTree::{self, *},
@@ -6,6 +6,8 @@ use proc_macro2::{
 use quote::quote;
 use std::iter::Peekable;
 use std::str::FromStr;
+
+use opcode_utils::from_str;
 
 #[derive(Debug)]
 pub enum Syntax {
@@ -58,7 +60,7 @@ pub fn parse(tokens: TokenStream) -> Vec<(Syntax, Span)> {
 
             // identifier, look up opcode
             (Ident(_), _) => {
-                match Opcode::from_str(&token_str) {
+                match from_str(&token_str) {
                     Ok(opcode) => (Syntax::Opcode(opcode), token.span()),
                     // Not a native Bitcoin opcode
                     // Allow functions without arguments to be identified by just their name
