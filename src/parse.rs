@@ -7,7 +7,7 @@ use quote::quote;
 use std::iter::Peekable;
 use std::str::FromStr;
 
-use opcode_utils::from_str;
+use bitcoin_opcode_utils::from_str;
 
 #[derive(Debug)]
 pub enum Syntax {
