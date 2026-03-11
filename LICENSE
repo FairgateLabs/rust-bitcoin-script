@@ -27,5 +27,5 @@ SOFTWARE.
 This project includes code with no license:
 
 - Bitcoin scripts inline in Rust
-  - Original source: [bitcoin-script](https://github.com/BitVM/rust-bitcoin-script_old)
-  - License: None
+  - Original source: [bitcoin-script](https://github.com/BitVM/rust-bitcoin-script)
+  - License: MIT
